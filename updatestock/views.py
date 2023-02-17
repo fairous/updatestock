@@ -8,9 +8,11 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import InvoiceForm, InvoiceSearchForm, InvoiceUpdateForm
 from .models import Invoice
+from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
+@csrf_exempt
 def home(request):
     title = 'Welcome: This is the Home Page'
     context = {
@@ -21,7 +23,7 @@ def home(request):
 
 # return render(request, "home.html", context)
 
-
+@csrf_exempt
 @login_required
 def list_items(request):
     header = 'LIST OF ITEMS'
@@ -56,7 +58,7 @@ def list_items(request):
         }
     return render(request, "list_items.html", context)
 
-
+@csrf_exempt
 @login_required
 def add_items(request):
     header = 'ADD ITEMS'
@@ -72,7 +74,7 @@ def add_items(request):
     }
     return render(request, "add_items.html", context)
 
-
+@csrf_exempt
 def update_items(request, pk):
     queryset = Stock.objects.get(id=pk)
     form = StockUpdateForm(instance=queryset)
@@ -88,7 +90,7 @@ def update_items(request, pk):
     }
     return render(request, 'add_items.html', context)
 
-
+@csrf_exempt
 def delete_items(request, pk):
     queryset = Stock.objects.get(id=pk)
     if request.method == 'POST':
@@ -97,7 +99,7 @@ def delete_items(request, pk):
         return redirect('/list_items')
     return render(request, 'delete_items.html')
 
-
+@csrf_exempt
 def stock_details(request, pk):
     queryset = Stock.objects.get(id=pk)
     context = {
@@ -106,7 +108,7 @@ def stock_details(request, pk):
     }
     return render(request, "stock_details.html", context)
 
-
+@csrf_exempt
 def issue_items(request, pk):
     queryset = Stock.objects.get(id=pk)
     form = IssueForm(request.POST or None, instance=queryset)
@@ -142,7 +144,7 @@ def issue_items(request, pk):
     }
     return render(request, "add_items.html", context)
 
-
+@csrf_exempt
 def receive_items(request, pk):
     queryset = Stock.objects.get(id=pk)
     form = ReceiveForm(request.POST or None, instance=queryset)
@@ -176,7 +178,7 @@ def receive_items(request, pk):
     }
     return render(request, "add_items.html", context)
 
-
+@csrf_exempt
 def reorder_level(request, pk):
     queryset = Stock.objects.get(id=pk)
     form = ReorderLevelForm(request.POST or None, instance=queryset)
@@ -193,7 +195,7 @@ def reorder_level(request, pk):
     }
     return render(request, "add_items.html", context)
 
-
+@csrf_exempt
 @login_required
 def list_history(request):
     header = 'HISTORY DATA'
@@ -272,7 +274,7 @@ def list_history(request):
 #     }
 #     return render(request, "home.html", context)
 
-
+@csrf_exempt
 def add_invoice(request):
     header = 'NEW INVOICE'
     form = InvoiceForm(request.POST or None)
@@ -292,7 +294,7 @@ def add_invoice(request):
     }
     return render(request, "entry.html", context)
 
-
+@csrf_exempt
 def list_invoice(request):
     header = 'INVOICE LIST'
     # title = 'List of Invoices'
@@ -1156,7 +1158,7 @@ def list_invoice(request):
 
     return render(request, "list_invoice.html", context)
 
-
+@csrf_exempt
 def update_invoice(request, pk):
     queryset = Invoice.objects.get(id=pk)
     form = InvoiceUpdateForm(instance=queryset)
@@ -1172,7 +1174,7 @@ def update_invoice(request, pk):
     }
     return render(request, 'entry.html', context)
 
-
+@csrf_exempt
 def delete_invoice(request, pk):
     queryset = Invoice.objects.get(id=pk)
     if request.method == 'POST':
