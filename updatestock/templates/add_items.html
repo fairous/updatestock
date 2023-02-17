@@ -1,0 +1,33 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<head>
+    <title>{{title}}</title>
+    <link href="{% static 'css/stylesheet.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'js/nprogress/nprogress.css' %}" rel="stylesheet">
+    {% include 'navbar.html' %}
+</head>
+<body>
+<main role="main" class="container">
+    <div class="jumbotron">
+        <div class="header">{{header}}</div>
+        <div class="row"><!--Start of row-->
+            <div class="col-sm-4"><!--Start of col-->
+                <div class="display_table">
+                    <form method='POST' action=''>{% csrf_token %}
+                        {{form|crispy}}
+                        <input class="btn btn-primary mybutton" type="submit" value='Save'/>
+                    </form>
+                </div>
+            </div><!--End of col-->
+        </div><!--End of row-->
+    </div>
+</main>
+</body>
+<script src="{% static 'js/jquery-3.6.1.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui-1.13.2/jquery-ui.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/pager/paging.js' %}"></script>
+<script src="{% static 'js/nprogress/nprogress.js' %}"></script>
+<script src="{% static 'js/myjs.js' %}"></script>
