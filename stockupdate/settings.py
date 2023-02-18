@@ -27,7 +27,10 @@ SECRET_KEY = 'django-insecure-x3$uir(fz#m-n+^lcwcvz0__qp=7cm^2pv4wrt4)b4n!#fij7m
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ["web-production-a80f.up.railway.app"]
+
+CSRF_TRUSTED_ORIGINS = [
+              'https://web-production-a80f.up.railway.app/'
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -133,13 +136,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
-
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
 # CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Default primary key field type
