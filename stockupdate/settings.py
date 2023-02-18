@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-x3$uir(fz#m-n+^lcwcvz0__qp=7cm^2pv4wrt4)b4n!#fij7m
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-# CSRF_TRUSTED_ORIGINS = ["web-production-a80f.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = [" http://web-production-a80f.up.railway.app"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -136,10 +136,10 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-#
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static'),
-#         ]
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+        ]
 # CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Default primary key field type
@@ -148,10 +148,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 
 ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window
+
 REGISTRATION_AUTO_LOGIN = True # Automatically log the user in.
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
