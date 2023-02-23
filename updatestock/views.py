@@ -23,6 +23,14 @@ def home(request):
 
 # return render(request, "home.html", context)
 
+
+def index(request):
+    title = 'Welcome: This is the Home Page'
+    context = {
+        "title": title,
+    }
+    return redirect('/list_items')
+
 @csrf_exempt
 @login_required
 def list_items(request):
